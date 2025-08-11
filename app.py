@@ -28,13 +28,13 @@ st.markdown("_Disclaimer: Due to many external factors influencing this project,
 st.markdown(
     """
     <style>
-    body { background-color: #111; }
-    .main-title { font-size: 3rem; font-weight: 900; color: #ff3333; padding: 10px 0px; text-transform: uppercase; letter-spacing: 1px; }
-    .sub-header { font-size: 1.2rem; color: #dddddd; margin-bottom: 30px; }
-    .stSlider > div > div { background-color: #333 !important; }
-    .block-container { background-color: #111 !important; color: #ffffff; }
-    .css-1cpxqw2, .css-ffhzg2 { color: #ffffff !important; }
-    .stDataFrame { background-color: #222 !important; }
+    body { background-color: white; color: black; }
+    .main-title { font-size: 3rem; font-weight: 900; color: #cc0000; padding: 10px 0px; text-transform: uppercase; letter-spacing: 1px; }
+    .sub-header { font-size: 1.2rem; color: #333333; margin-bottom: 30px; }
+    .stSlider > div > div { background-color: #ddd !important; }
+    .block-container { background-color: white !important; color: black !important; }
+    .css-1cpxqw2, .css-ffhzg2 { color: black !important; }
+    .stDataFrame { background-color: #eee !important; color: black !important; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -188,3 +188,4 @@ with tab3:
 # Footer
 st.markdown("---")
 st.caption("Built with Streamlit · Metal Genre Audio AI · By Nastassia Pukelik")
+
