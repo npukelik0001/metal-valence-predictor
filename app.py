@@ -45,9 +45,19 @@ st.markdown('<div class="main-title">Metal Song Valence Predictor</div>', unsafe
 st.markdown('<div class="sub-header">Estimate the emotional positivity of metal tracks using audio features</div>', unsafe_allow_html=True)
 
 # Tabs
+st.markdown(
+    """
+    <style>
+    .css-1r6slb0.e1fqkh3o3 > button {
+        color: black !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 tab1, tab2, tab3 = st.tabs(["Predict Valence", "Top Songs by Genre", "Top Songs by Artist"])
 
-# --- TAB 1: Predict Valence ---
 with tab1:
     st.markdown("## Predict Valence from Audio Features")
     col1, col2, col3 = st.columns([1, 1, 1])
@@ -188,4 +198,5 @@ with tab3:
 # Footer
 st.markdown("---")
 st.caption("Built with Streamlit · Metal Genre Audio AI · By Nastassia Pukelik")
+
 
