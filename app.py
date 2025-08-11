@@ -24,17 +24,55 @@ st.set_page_config(page_title="Metal Valence Predictor", layout="wide")
 # Disclaimer moved below
 st.markdown("_Disclaimer: Due to many external factors influencing this project, the R-squared value is only about 51%._")
 
-# Custom CSS
+# Custom CSS for white background, black text, red title, red sliders, black tabs
 st.markdown(
     """
     <style>
-    body { background-color: white; color: black; }
-    .main-title { font-size: 3rem; font-weight: 900; color: #cc0000; padding: 10px 0px; text-transform: uppercase; letter-spacing: 1px; }
-    .sub-header { font-size: 1.2rem; color: #333333; margin-bottom: 30px; }
-    .stSlider > div > div { background-color: #ddd !important; }
-    .block-container { background-color: white !important; color: black !important; }
-    .css-1cpxqw2, .css-ffhzg2 { color: black !important; }
-    .stDataFrame { background-color: #eee !important; color: black !important; }
+    /* Background and text */
+    body, .block-container {
+        background-color: white !important;
+        color: black !important;
+    }
+
+    /* Title red */
+    .main-title {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #cc0000;
+        padding: 10px 0px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Sub-header black */
+    .sub-header {
+        font-size: 1.2rem;
+        color: black;
+        margin-bottom: 30px;
+    }
+
+    /* Slider track and handle red */
+    div[data-baseweb="slider"] > div > div {
+        background-color: #cc0000 !important; /* track */
+    }
+    div[data-baseweb="slider"] > div > div > div {
+        background-color: #cc0000 !important; /* filled portion */
+    }
+    div[data-baseweb="slider"] > div > div > div > div {
+        background-color: #cc0000 !important; /* handle */
+        border: 2px solid #cc0000 !important;
+    }
+
+    /* Tabs label text color black */
+    .css-1r6slb0.e1fqkh3o3 > button {
+        color: black !important;
+    }
+
+    /* DataFrame background and text */
+    .stDataFrame {
+        background-color: #eee !important;
+        color: black !important;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -45,19 +83,9 @@ st.markdown('<div class="main-title">Metal Song Valence Predictor</div>', unsafe
 st.markdown('<div class="sub-header">Estimate the emotional positivity of metal tracks using audio features</div>', unsafe_allow_html=True)
 
 # Tabs
-st.markdown(
-    """
-    <style>
-    .css-1r6slb0.e1fqkh3o3 > button {
-        color: black !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
 tab1, tab2, tab3 = st.tabs(["Predict Valence", "Top Songs by Genre", "Top Songs by Artist"])
 
+# --- TAB 1: Predict Valence ---
 with tab1:
     st.markdown("## Predict Valence from Audio Features")
     col1, col2, col3 = st.columns([1, 1, 1])
@@ -198,5 +226,3 @@ with tab3:
 # Footer
 st.markdown("---")
 st.caption("Built with Streamlit · Metal Genre Audio AI · By Nastassia Pukelik")
-
-
