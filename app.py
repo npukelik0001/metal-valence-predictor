@@ -191,9 +191,9 @@ with tab2:
                 genre_df['Predicted_Valence'], bins=20, 
                 color='gray', edgecolor='black'
             )
-            ax.set_title(f"Valence Distribution for {selected_genre}", color='white')
-            ax.set_xlabel("Predicted Valence", color='white')
-            ax.set_ylabel("Frequency", color='white')
+            ax.set_title(f"Valence Distribution for {selected_genre}", color='blue')
+            ax.set_xlabel("Predicted Valence", color='blue')
+            ax.set_ylabel("Frequency", color='blue')
             st.pyplot(fig)
 
         with col2:
@@ -203,9 +203,9 @@ with tab2:
                     genre_df['energy'], genre_df['Predicted_Valence'], 
                     alpha=0.7, color='gray', edgecolors='black', linewidth=0.8
                 )
-                ax2.set_xlabel("Energy", color='white')
-                ax2.set_ylabel("Predicted Valence", color='white')
-                ax2.set_title(f"Energy vs Valence for {selected_genre}", color='white')
+                ax2.set_xlabel("Energy", color='blue')
+                ax2.set_ylabel("Predicted Valence", color='blue')
+                ax2.set_title(f"Energy vs Valence for {selected_genre}", color='blue')
                 st.pyplot(fig2)
     else:
         st.warning("Genre column not found in dataset.")
@@ -243,8 +243,8 @@ with tab3:
                 top_artist_songs['track_name'], top_artist_songs['Predicted_Valence'], 
                 color='gray', edgecolor='black'
             )
-            ax1.set_xlabel("Predicted Valence", color='white')
-            ax1.set_title(f"Top 10 Songs by {selected_artist}", color='white')
+            ax1.set_xlabel("Predicted Valence", color='blue')
+            ax1.set_title(f"Top 10 Songs by {selected_artist}", color='blue')
             ax1.invert_yaxis()
             st.pyplot(fig1)
 
@@ -258,8 +258,8 @@ with tab3:
                 capprops=dict(color='black'),
                 flierprops=dict(markeredgecolor='black')
             )
-            ax2.set_title(f"Valence Distribution for {selected_artist}", color='white')
-            ax2.set_ylabel("Predicted Valence", color='white')
+            ax2.set_title(f"Valence Distribution for {selected_artist}", color='blue')
+            ax2.set_ylabel("Predicted Valence", color='blue')
             st.pyplot(fig2)
 
     else:
@@ -268,4 +268,5 @@ with tab3:
 # Footer
 st.markdown("---")
 st.caption("Built with Streamlit · Metal Genre Audio AI · By Nastassia Pukelik")
+
 
