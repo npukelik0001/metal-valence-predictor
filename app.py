@@ -24,7 +24,7 @@ st.set_page_config(page_title="Metal Valence Predictor", layout="wide")
 # Disclaimer moved below
 st.markdown("_Disclaimer: Due to many external factors influencing this project, the R-squared value is only about 51%._")
 
-# Custom CSS for white background, black text, red title, red sliders, black tabs
+# Custom CSS for white background and black text everywhere
 st.markdown(
     """
     <style>
@@ -34,11 +34,11 @@ st.markdown(
         color: black !important;
     }
 
-    /* Title red */
+    /* Title black */
     .main-title {
         font-size: 3rem;
         font-weight: 900;
-        color: #cc0000;
+        color: black !important;
         padding: 10px 0px;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -47,20 +47,20 @@ st.markdown(
     /* Sub-header black */
     .sub-header {
         font-size: 1.2rem;
-        color: black;
+        color: black !important;
         margin-bottom: 30px;
     }
 
-    /* Slider track and handle red */
+    /* Slider track and handle black */
     div[data-baseweb="slider"] > div > div {
-        background-color: #cc0000 !important; /* track */
+        background-color: black !important; /* track */
     }
     div[data-baseweb="slider"] > div > div > div {
-        background-color: #cc0000 !important; /* filled portion */
+        background-color: black !important; /* filled portion */
     }
     div[data-baseweb="slider"] > div > div > div > div {
-        background-color: #cc0000 !important; /* handle */
-        border: 2px solid #cc0000 !important;
+        background-color: black !important; /* handle */
+        border: 2px solid black !important;
     }
 
     /* Tabs label text color black */
@@ -162,19 +162,19 @@ with tab2:
 
         with col1:
             fig, ax = plt.subplots(figsize=(6, 4))
-            ax.hist(genre_df['Predicted_Valence'], bins=20, color='red', edgecolor='black')
-            ax.set_title(f"Valence Distribution for {selected_genre}")
-            ax.set_xlabel("Predicted Valence")
-            ax.set_ylabel("Frequency")
+            ax.hist(genre_df['Predicted_Valence'], bins=20, color='black', edgecolor='black')
+            ax.set_title(f"Valence Distribution for {selected_genre}", color='black')
+            ax.set_xlabel("Predicted Valence", color='black')
+            ax.set_ylabel("Frequency", color='black')
             st.pyplot(fig)
 
         with col2:
             if 'energy' in genre_df.columns:
                 fig2, ax2 = plt.subplots(figsize=(6, 4))
-                ax2.scatter(genre_df['energy'], genre_df['Predicted_Valence'], alpha=0.6, color='green')
-                ax2.set_xlabel("Energy")
-                ax2.set_ylabel("Predicted Valence")
-                ax2.set_title(f"Energy vs Valence for {selected_genre}")
+                ax2.scatter(genre_df['energy'], genre_df['Predicted_Valence'], alpha=0.6, color='black')
+                ax2.set_xlabel("Energy", color='black')
+                ax2.set_ylabel("Predicted Valence", color='black')
+                ax2.set_title(f"Energy vs Valence for {selected_genre}", color='black')
                 st.pyplot(fig2)
     else:
         st.warning("Genre column not found in dataset.")
@@ -208,17 +208,17 @@ with tab3:
 
         with col1:
             fig1, ax1 = plt.subplots(figsize=(7, 5))
-            ax1.barh(top_artist_songs['track_name'], top_artist_songs['Predicted_Valence'], color='orange')
-            ax1.set_xlabel("Predicted Valence")
-            ax1.set_title(f"Top 10 Songs by {selected_artist}")
+            ax1.barh(top_artist_songs['track_name'], top_artist_songs['Predicted_Valence'], color='black')
+            ax1.set_xlabel("Predicted Valence", color='black')
+            ax1.set_title(f"Top 10 Songs by {selected_artist}", color='black')
             ax1.invert_yaxis()
             st.pyplot(fig1)
 
         with col2:
             fig2, ax2 = plt.subplots(figsize=(6, 5))
-            ax2.boxplot(artist_df['Predicted_Valence'], patch_artist=True, boxprops=dict(facecolor='skyblue'))
-            ax2.set_title(f"Valence Distribution for {selected_artist}")
-            ax2.set_ylabel("Predicted Valence")
+            ax2.boxplot(artist_df['Predicted_Valence'], patch_artist=True, boxprops=dict(facecolor='black'))
+            ax2.set_title(f"Valence Distribution for {selected_artist}", color='black')
+            ax2.set_ylabel("Predicted Valence", color='black')
             st.pyplot(fig2)
     else:
         st.warning("No artists with at least 5 songs found in the dataset.")
