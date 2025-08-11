@@ -21,57 +21,82 @@ if 'artists' not in df.columns:
 # Page config
 st.set_page_config(page_title="Metal Valence Predictor", layout="wide")
 
-# Disclaimer moved below
+# Disclaimer
 st.markdown("_Disclaimer: Due to many external factors influencing this project, the R-squared value is only about 51%._")
 
-# Custom CSS for white background and black text everywhere
+# Custom CSS for blue background and white text everywhere, with good slider and tab styles
 st.markdown(
     """
     <style>
-    /* Background and text */
+    /* Background and container */
     body, .block-container {
-        background-color: white !important;
-        color: black !important;
+        background-color: #1a3c72 !important;  /* medium blue */
+        color: white !important;
     }
 
-    /* Title black */
+    /* Title white */
     .main-title {
         font-size: 3rem;
         font-weight: 900;
-        color: black !important;
+        color: white !important;
         padding: 10px 0px;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
 
-    /* Sub-header black */
+    /* Sub-header white */
     .sub-header {
         font-size: 1.2rem;
-        color: black !important;
+        color: white !important;
         margin-bottom: 30px;
     }
 
-    /* Slider track and handle black */
+    /* Sliders styling */
     div[data-baseweb="slider"] > div > div {
-        background-color: black !important; /* track */
+        background-color: #255aaf !important; /* darker blue track */
     }
     div[data-baseweb="slider"] > div > div > div {
-        background-color: black !important; /* filled portion */
+        background-color: #80b3ff !important; /* lighter blue filled */
     }
     div[data-baseweb="slider"] > div > div > div > div {
-        background-color: black !important; /* handle */
-        border: 2px solid black !important;
+        background-color: white !important; /* white handle */
+        border: 2px solid white !important;
     }
 
-    /* Tabs label text color black */
+    /* Tabs label text color white */
     .css-1r6slb0.e1fqkh3o3 > button {
-        color: black !important;
+        color: white !important;
+    }
+    /* Tab selected underline white */
+    .css-1r6slb0.e1fqkh3o3 > button[aria-selected="true"] {
+        border-bottom: 3px solid white !important;
+        font-weight: 700;
     }
 
     /* DataFrame background and text */
     .stDataFrame {
-        background-color: #eee !important;
-        color: black !important;
+        background-color: #27496d !important; /* dark blue-gray */
+        color: white !important;
+    }
+
+    /* Fix column text color in tab1 sliders and other input controls */
+    .stSlider > div, .stSlider > div > div {
+        color: white !important;
+    }
+
+    /* Ensure text inputs, selectboxes, buttons text are white */
+    div[role="combobox"], div[role="textbox"], button {
+        color: white !important;
+    }
+
+    /* Matplotlib text in plots white */
+    .stPlotlyChart, .stPyplot {
+        color: white !important;
+    }
+
+    /* Set matplotlib axes labels and titles color */
+    .mpl-color {
+        color: white !important;
     }
     </style>
     """,
@@ -162,19 +187,19 @@ with tab2:
 
         with col1:
             fig, ax = plt.subplots(figsize=(6, 4))
-            ax.hist(genre_df['Predicted_Valence'], bins=20, color='black', edgecolor='black')
-            ax.set_title(f"Valence Distribution for {selected_genre}", color='black')
-            ax.set_xlabel("Predicted Valence", color='black')
-            ax.set_ylabel("Frequency", color='black')
+            ax.hist(genre_df['Predicted_Valence'], bins=20, color='white', edgecolor='black')
+            ax.set_title(f"Valence Distribution for {selected_genre}", color='white')
+            ax.set_xlabel("Predicted Valence", color='white')
+            ax.set_ylabel("Frequency", color='white')
             st.pyplot(fig)
 
         with col2:
             if 'energy' in genre_df.columns:
                 fig2, ax2 = plt.subplots(figsize=(6, 4))
-                ax2.scatter(genre_df['energy'], genre_df['Predicted_Valence'], alpha=0.6, color='black')
-                ax2.set_xlabel("Energy", color='black')
-                ax2.set_ylabel("Predicted Valence", color='black')
-                ax2.set_title(f"Energy vs Valence for {selected_genre}", color='black')
+                ax2.scatter(genre_df['energy'], genre_df['Predicted_Valence'], alpha=0.6, color='white')
+                ax2.set_xlabel("Energy", color='white')
+                ax2.set_ylabel("Predicted Valence", color='white')
+                ax2.set_title(f"Energy vs Valence for {selected_genre}", color='white')
                 st.pyplot(fig2)
     else:
         st.warning("Genre column not found in dataset.")
@@ -208,17 +233,17 @@ with tab3:
 
         with col1:
             fig1, ax1 = plt.subplots(figsize=(7, 5))
-            ax1.barh(top_artist_songs['track_name'], top_artist_songs['Predicted_Valence'], color='black')
-            ax1.set_xlabel("Predicted Valence", color='black')
-            ax1.set_title(f"Top 10 Songs by {selected_artist}", color='black')
+            ax1.barh(top_artist_songs['track_name'], top_artist_songs['Predicted_Valence'], color='white')
+            ax1.set_xlabel("Predicted Valence", color='white')
+            ax1.set_title(f"Top 10 Songs by {selected_artist}", color='white')
             ax1.invert_yaxis()
             st.pyplot(fig1)
 
         with col2:
             fig2, ax2 = plt.subplots(figsize=(6, 5))
-            ax2.boxplot(artist_df['Predicted_Valence'], patch_artist=True, boxprops=dict(facecolor='black'))
-            ax2.set_title(f"Valence Distribution for {selected_artist}", color='black')
-            ax2.set_ylabel("Predicted Valence", color='black')
+            ax2.boxplot(artist_df['Predicted_Valence'], patch_artist=True, boxprops=dict(facecolor='white'))
+            ax2.set_title(f"Valence Distribution for {selected_artist}", color='white')
+            ax2.set_ylabel("Predicted Valence", color='white')
             st.pyplot(fig2)
     else:
         st.warning("No artists with at least 5 songs found in the dataset.")
