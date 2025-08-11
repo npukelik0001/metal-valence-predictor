@@ -187,7 +187,10 @@ with tab2:
 
         with col1:
             fig, ax = plt.subplots(figsize=(6, 4))
-            ax.hist(genre_df['Predicted_Valence'], bins=20, color='white', edgecolor='black')
+            ax.hist(
+                genre_df['Predicted_Valence'], bins=20, 
+                color='gray', edgecolor='black'
+            )
             ax.set_title(f"Valence Distribution for {selected_genre}", color='white')
             ax.set_xlabel("Predicted Valence", color='white')
             ax.set_ylabel("Frequency", color='white')
@@ -196,7 +199,10 @@ with tab2:
         with col2:
             if 'energy' in genre_df.columns:
                 fig2, ax2 = plt.subplots(figsize=(6, 4))
-                ax2.scatter(genre_df['energy'], genre_df['Predicted_Valence'], alpha=0.6, color='white')
+                ax2.scatter(
+                    genre_df['energy'], genre_df['Predicted_Valence'], 
+                    alpha=0.7, color='gray', edgecolors='black', linewidth=0.8
+                )
                 ax2.set_xlabel("Energy", color='white')
                 ax2.set_ylabel("Predicted Valence", color='white')
                 ax2.set_title(f"Energy vs Valence for {selected_genre}", color='white')
@@ -233,7 +239,10 @@ with tab3:
 
         with col1:
             fig1, ax1 = plt.subplots(figsize=(7, 5))
-            ax1.barh(top_artist_songs['track_name'], top_artist_songs['Predicted_Valence'], color='white')
+            ax1.barh(
+                top_artist_songs['track_name'], top_artist_songs['Predicted_Valence'], 
+                color='gray', edgecolor='black'
+            )
             ax1.set_xlabel("Predicted Valence", color='white')
             ax1.set_title(f"Top 10 Songs by {selected_artist}", color='white')
             ax1.invert_yaxis()
@@ -241,13 +250,22 @@ with tab3:
 
         with col2:
             fig2, ax2 = plt.subplots(figsize=(6, 5))
-            ax2.boxplot(artist_df['Predicted_Valence'], patch_artist=True, boxprops=dict(facecolor='white'))
+            bp = ax2.boxplot(
+                artist_df['Predicted_Valence'], patch_artist=True,
+                boxprops=dict(facecolor='gray', edgecolor='black'),
+                medianprops=dict(color='black'),
+                whiskerprops=dict(color='black'),
+                capprops=dict(color='black'),
+                flierprops=dict(markeredgecolor='black')
+            )
             ax2.set_title(f"Valence Distribution for {selected_artist}", color='white')
             ax2.set_ylabel("Predicted Valence", color='white')
             st.pyplot(fig2)
+
     else:
         st.warning("No artists with at least 5 songs found in the dataset.")
 
 # Footer
 st.markdown("---")
 st.caption("Built with Streamlit · Metal Genre Audio AI · By Nastassia Pukelik")
+
